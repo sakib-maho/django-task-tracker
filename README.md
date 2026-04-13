@@ -18,6 +18,30 @@ Refactored into a complete Django web application for managing tasks with status
 - Django admin integration
 - Automated tests for model and view behavior
 
+## Quick Start
+
+```bash
+git clone https://github.com/sakib-maho/django-task-tracker.git
+cd django-task-tracker
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+python manage.py migrate
+python manage.py runserver
+```
+
+Open `http://127.0.0.1:8000/`.
+
+## Tests
+
+```bash
+python manage.py test
+```
+
+## License
+
+MIT - see [LICENSE](LICENSE).
+
 ## Tech Stack
 
 - Python 3
@@ -41,30 +65,6 @@ Refactored into a complete Django web application for managing tasks with status
     └── templates/tasks/
 ```
 
-## Quick Start
-
-```bash
-git clone https://github.com/sakib-maho/django-task-tracker.git
-cd django-task-tracker
-python3 -m venv .venv
-source .venv/bin/activate
-pip install -r requirements.txt
-python manage.py migrate
-python manage.py runserver
-```
-
-Open `http://127.0.0.1:8000/`.
-
 ## API
 
 - `GET /api/tasks/` returns JSON task data.
-
-## Run Tests
-
-```bash
-python manage.py test
-```
-
-## License
-
-MIT - see [LICENSE](LICENSE).
