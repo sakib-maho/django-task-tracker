@@ -1,0 +1,51 @@
+{% extends "tasks/base.html" %}
+
+{% block title %}Tasks{% endblock %}
+
+{% block body %}
+<div class="d-flex justify-content-between align-items-center mb-3">
+  <h1 class="h4 mb-0">Tasks</h1>
+  <form method="get" class="d-flex gap-2">
+    <select name="status" class="form-select form-select-sm">
+      <option value="">All statuses</option>
+      <option value="todo" {% if status_filter == "todo" %}selected{% endif %}>To Do</option>
+      <option value="in_progress" {% if status_filter == "in_progress" %}selected{% endif %}>In Progress</option>
+      <option value="done" {% if status_filter == "done" %}selected{% endif %}>Done</option>
+    </select>
+    <button class="btn btn-sm btn-primary" type="submit">Filter</button>
+  </form>
+</div>
+
+{% if tasks %}
+<div class="table-responsive">
+  <table class="table table-hover bg-white">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Status</th>
+        <th>Priority</th>
+        <th>Due Date</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for task in tasks %}
+      <tr>
+        <td>{{ task.title }}</td>
+        <td>{{ task.get_status_display }}</td>
+        <td>{{ task.get_priority_display }}</td>
+        <td>{{ task.due_date|default:"-" }}</td>
+        <td class="text-end">
+          <a class="btn btn-sm btn-outline-secondary" href="{% url 'task_detail' task.id %}">View</a>
+          <a class="btn btn-sm btn-outline-primary" href="{% url 'task_update' task.id %}">Edit</a>
+          <a class="btn btn-sm btn-outline-danger" href="{% url 'task_delete' task.id %}">Delete</a>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% else %}
+<div class="alert alert-info">No tasks found.</div>
+{% endif %}
+{% endblock %}
