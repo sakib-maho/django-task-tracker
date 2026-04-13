@@ -1,4 +1,4 @@
-# Django Python Assignment - Task Tracker
+# Django Task Tracker
 
 Refactored into a complete Django web application for managing tasks with status/priority workflows and a JSON API.
 
@@ -37,8 +37,8 @@ Refactored into a complete Django web application for managing tasks with status
 ## Quick Start
 
 ```bash
-git clone https://github.com/sakib-maho/django-python-assignment.git
-cd django-python-assignment
+git clone https://github.com/sakib-maho/django-task-tracker.git
+cd django-task-tracker
 python3 -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
